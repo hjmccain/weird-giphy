@@ -1,0 +1,18 @@
+.s {
+  height: 100;
+  width: 100;
+}
+
+.m {
+  height: 150px;
+  width: 150px;
+}
+
+.l {
+  height: 200px;
+  width: 200px;
+}
+
+.gif {
+  background: gold;
+}
