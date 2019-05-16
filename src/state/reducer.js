@@ -1,15 +1,27 @@
+import { exists } from "ramda";
 import { combineReducers } from "redux";
+import { SET_CURRENT, UPDATE_FAVORITES } from "./actions";
 
-const initState = {};
+const initState = {
+  weird: 1,
+  searchTerm: "game+of+thrones",
+  current: null,
+  favorites: []
+};
 
-const reducer = state => {
-  if (typeof state === "undefined") {
-    return initState;
+const reducer = (state = initState, action) => {
+  switch (action.type) {
+    case SET_CURRENT:
+      return {
+        ...state,
+        current: action.current
+      };
+    case UPDATE_FAVORITES: {
+      return state;
+    }
+    default:
+      return state;
   }
-
-  // For now, don't handle any actions
-  // and just return the state given to us.
-  return state;
 };
 
 export default combineReducers({ reducer });
