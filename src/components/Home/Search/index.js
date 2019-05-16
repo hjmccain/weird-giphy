@@ -1,8 +1,14 @@
-import React from "react";
+import React, { useState } from "react";
+import { connect } from "react-redux";
+import PropTypes from "prop-types";
 import TextField from "@material-ui/core/TextField";
 import { Button } from "@material-ui/core";
+import { updateSearch } from "../../../state/actions";
 
-const Search = () => {
+const Search = props => {
+  const [search, update] = useState("");
+  const handleChange = val => update(val);
+
   return (
     <div>
       <div id="intro">
@@ -23,14 +29,29 @@ const Search = () => {
       <div id="search-bar-container">
         <div id="search-bar">
           <TextField
-            onChange={() => console.log("change")}
+            value={search}
+            onChange={e => handleChange(e.target.value)}
             variant="outlined"
           />
-          <Button onClick={() => console.log("submit")}>Submit</Button>
+          <Button
+            onClick={() => {
+              props.dispatch(updateSearch(search));
+              handleChange("");
+            }}
+          >
+            Submit
+          </Button>
         </div>
       </div>
     </div>
   );
 };
 
-export default Search;
+Search.propTypes = {
+  dispatch: PropTypes.func.isRequired
+};
+
+export default connect(
+  null,
+  dispatch => ({ dispatch })
+)(Search);

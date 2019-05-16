@@ -7,7 +7,7 @@ const GifImage = props => {
 };
 
 GifImage.propTypes = {
-  size: PropTypes.oneOf(["s", "m", "l"])
+  size: PropTypes.oneOf(["s", "m", "l"]).isRequired
 };
 
 export default GifImage;

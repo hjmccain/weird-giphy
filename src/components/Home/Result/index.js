@@ -1,11 +1,17 @@
 import React, { useState } from "react";
+import { connect } from "react-redux";
+import PropTypes from "prop-types";
 import Gif from "../../Gif";
 import { Slider } from "@material-ui/lab";
 import "./Result.css";
+import { updateWeird } from "../../../state/actions";
 
-const Result = () => {
+const Result = props => {
   const [slider, updateSlider] = useState(0);
-  const handleChange = (_, value) => updateSlider(value);
+  const handleChange = (_, val) => {
+    updateSlider(val);
+    props.dispatch(updateWeird(val));
+  };
 
   return (
     <div>
@@ -14,11 +20,18 @@ const Result = () => {
         <Gif size="l" />
       </div>
       <div id="slider-container">
-        <Slider value={slider} onChange={handleChange} />
-        <div id="slider-label">Weirdness: 0</div>
+        <Slider value={slider} step="1" max="10" onChange={handleChange} />
+        <div id="slider-label">Weirdness: {slider}</div>
       </div>
     </div>
   );
 };
 
-export default Result;
+Result.propTypes = {
+  dispatch: PropTypes.func.isRequired
+};
+
+export default connect(
+  null,
+  dispatch => ({ dispatch })
+)(Result);

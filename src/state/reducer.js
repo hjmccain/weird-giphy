@@ -1,6 +1,5 @@
 import { exists } from "ramda";
-import { combineReducers } from "redux";
-import { SET_CURRENT, UPDATE_FAVORITES } from "./actions";
+import * as a from "./actions";
 
 const initState = {
   weird: 1,
@@ -11,12 +10,22 @@ const initState = {
 
 const reducer = (state = initState, action) => {
   switch (action.type) {
-    case SET_CURRENT:
+    case a.SET_CURRENT:
       return {
         ...state,
         current: action.current
       };
-    case UPDATE_FAVORITES: {
+    case a.UPDATE_SEARCH:
+      return {
+        ...state,
+        searchTerm: action.searchTerm
+      };
+    case a.UPDATE_WEIRD:
+      return {
+        ...state,
+        weird: action.weird
+      };
+    case a.UPDATE_FAVORITES: {
       return state;
     }
     default:
@@ -24,4 +33,4 @@ const reducer = (state = initState, action) => {
   }
 };
 
-export default combineReducers({ reducer });
+export default reducer;

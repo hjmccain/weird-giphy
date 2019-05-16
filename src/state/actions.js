@@ -1,5 +1,7 @@
 export const SET_CURRENT = "SET_CURRENT";
 export const UPDATE_FAVORITES = "UPDATE_FAVORITES";
+export const UPDATE_SEARCH = "UPDATE_SEARCH";
+export const UPDATE_WEIRD = "UPDATE_WEIRD";
 
 export const fetchGif = ({ searchTerm, weird }) => dispatch => {
   fetch(
@@ -17,7 +19,7 @@ export const fetchGif = ({ searchTerm, weird }) => dispatch => {
 
       return res.json();
     })
-    .then(data => dispatch(setCurrent(data[0])))
+    .then(data => dispatch(setCurrent({ ...data[0], weird })))
     .catch(e => console.error("Error fetching gif(s). Error:", e));
 };
 
@@ -29,4 +31,14 @@ export const setCurrent = gif => ({
 export const updateFavorites = id => ({
   type: UPDATE_FAVORITES,
   id
+});
+
+export const updateSearch = searchTerm => ({
+  type: UPDATE_SEARCH,
+  searchTerm
+});
+
+export const updateWeird = weird => ({
+  type: UPDATE_WEIRD,
+  weird
 });
