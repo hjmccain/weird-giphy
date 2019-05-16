@@ -13,7 +13,7 @@ const reducer = (state = initState, action) => {
     case a.SET_CURRENT:
       return {
         ...state,
-        current: action.current
+        current: action.current.images.original.url
       };
     case a.UPDATE_SEARCH:
       return {

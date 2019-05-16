@@ -17,10 +17,10 @@ const Result = props => {
     <div>
       <h2>Your result</h2>
       <div id="result-container">
-        <Gif size="l" />
+        <Gif size="l" currentUrl={props.currentUrl} />
       </div>
       <div id="slider-container">
-        <Slider value={slider} step="1" max="10" onChange={handleChange} />
+        <Slider value={slider} step={1} max={10} onChange={handleChange} />
         <div id="slider-label">Weirdness: {slider}</div>
       </div>
     </div>
@@ -28,10 +28,13 @@ const Result = props => {
 };
 
 Result.propTypes = {
-  dispatch: PropTypes.func.isRequired
+  dispatch: PropTypes.func.isRequired,
+  embedUrl: PropTypes.string
 };
 
 export default connect(
-  null,
+  state => ({
+    currentUrl: state.current
+  }),
   dispatch => ({ dispatch })
 )(Result);

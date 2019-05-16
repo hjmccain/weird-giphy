@@ -3,7 +3,7 @@ import { connect } from "react-redux";
 import PropTypes from "prop-types";
 import TextField from "@material-ui/core/TextField";
 import { Button } from "@material-ui/core";
-import { updateSearch } from "../../../state/actions";
+import { updateSearch, fetchGif } from "../../../state/actions";
 
 const Search = props => {
   const [search, update] = useState("");
@@ -36,6 +36,9 @@ const Search = props => {
           <Button
             onClick={() => {
               props.dispatch(updateSearch(search));
+              props.dispatch(
+                fetchGif({ searchTerm: search, weird: props.weird })
+              );
               handleChange("");
             }}
           >
@@ -48,10 +51,11 @@ const Search = props => {
 };
 
 Search.propTypes = {
-  dispatch: PropTypes.func.isRequired
+  dispatch: PropTypes.func.isRequired,
+  weird: PropTypes.number.isRequired
 };
 
 export default connect(
-  null,
+  state => ({ weird: state.weird }),
   dispatch => ({ dispatch })
 )(Search);
