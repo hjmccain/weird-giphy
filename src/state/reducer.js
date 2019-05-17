@@ -1,5 +1,6 @@
 import { filter, uniqBy } from "ramda";
 import * as a from "./actions";
+import { HOME } from "./actions";
 import { combineReducers } from "../../../../Library/Caches/typescript/3.4.5/node_modules/redux";
 
 const initState = {
@@ -17,7 +18,8 @@ const gifs = (state = initState, action) => {
         current: {
           url: action.current.images.original.url,
           gifId: action.current.id,
-          title: action.current.title
+          title: action.current.title,
+          weird: action.current.weird
         }
       };
     case a.UPDATE_SEARCH:
@@ -33,12 +35,17 @@ const gifs = (state = initState, action) => {
     case a.ADD_FAVORITE:
       return {
         ...state,
-        favorites: [...state.favorites, action.gif]
+        favorites: uniqBy(gif => gif.gifId, [...state.favorites, action.gif])
       };
     case a.REMOVE_FAVORITE:
       return {
         ...state,
         favorites: filter(fav => fav !== action.gif, state.favorites)
+      };
+    case a.CLEAR_ALL:
+      return {
+        ...state,
+        favorites: []
       };
     default:
       return state;
@@ -46,7 +53,7 @@ const gifs = (state = initState, action) => {
 };
 
 const routeState = {
-  location: "HOME"
+  location: HOME
 };
 
 const naiveRouting = (state = routeState, action) => {

@@ -1,11 +1,12 @@
 export const SET_CURRENT = "SET_CURRENT";
 export const ADD_FAVORITE = "ADD_FAVORITE";
 export const REMOVE_FAVORITE = "REMOVE_FAVORITE";
+export const CLEAR_ALL = "CLEAR_ALL";
 export const UPDATE_SEARCH = "UPDATE_SEARCH";
 export const UPDATE_WEIRD = "UPDATE_WEIRD";
 export const UPDATE_LOCATION = "UPDATE_LOCATION";
 
-// gifs
+// GIFS
 export const fetchGif = ({ searchTerm, weird }) => dispatch =>
   fetch(
     `http://api.giphy.com/v1/gifs/translate?s=${searchTerm}&api_key=7EXrkYnwiEJfdy6uEgyp1HW2HZz8plJi&weirdness=${weird}`
@@ -40,7 +41,12 @@ export const updateWeird = weird => ({
   weird
 });
 
-// "routing"
+// "ROUTING"
+// "enums"
+export const DASH = "DASH";
+export const HOME = "HOME";
+
+// action creators
 export const updateLocation = location => ({
   type: UPDATE_LOCATION,
   location

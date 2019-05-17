@@ -2,7 +2,8 @@ import React from "react";
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
 import HomeContainer from "./Home";
-import { fetchGif } from "../state/actions";
+import ResultsDash from "./ResultsDash";
+import { fetchGif, HOME, DASH } from "../state/actions";
 import "./Container.css";
 
 class Container extends React.Component {
@@ -13,17 +14,19 @@ class Container extends React.Component {
     return (
       <div id="container">
         <div id="app-header">Weirdness Calculator</div>
-        <HomeContainer />
+        {this.props.location === HOME ? <HomeContainer /> : <ResultsDash />}
+        {/* <ResultsDash /> */}
       </div>
     );
   }
 }
 
 Container.propTypes = {
-  dispatch: PropTypes.func.isRequired
+  dispatch: PropTypes.func.isRequired,
+  location: PropTypes.oneOf([HOME, DASH]).isRequired
 };
 
 export default connect(
-  null,
+  state => ({ location: state.naiveRouting.location }),
   dispatch => ({ dispatch })
 )(Container);
