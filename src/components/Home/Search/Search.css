@@ -1,0 +1,16 @@
+#intro > div:first-child {
+  padding-bottom: 15px;
+}
+
+#intro {
+  margin-bottom: 20px;
+}
+
+#search-bar {
+  display: flex;
+  align-items: center;
+}
+
+#search-bar > div {
+  padding-right: 10px;
+}

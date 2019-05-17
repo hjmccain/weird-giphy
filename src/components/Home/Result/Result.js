@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
-import Gif from "../../Gif";
+import Gif from "../../Gif/Gif";
 import { Slider } from "@material-ui/lab";
 import "./Result.css";
 import {
@@ -21,12 +21,13 @@ const Result = props => {
   };
 
   return (
-    <div>
-      <h2>Your result</h2>
+    <React.Fragment>
+      <h2>YOUR RESULT</h2>
       <div id="result-container">
         {props.gif ? <Gif size="l" gif={props.gif} /> : null}
       </div>
       <Button
+        variant={"contained"}
         onClick={() =>
           props.dispatch(
             updateFavorites({ type: ADD_FAVORITE, gif: props.gif })
@@ -39,7 +40,7 @@ const Result = props => {
         <Slider value={slider} step={1} max={10} onChange={handleChange} />
         <div id="slider-label">Weirdness: {slider}</div>
       </div>
-    </div>
+    </React.Fragment>
   );
 };
 

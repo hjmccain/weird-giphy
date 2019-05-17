@@ -1,8 +1,8 @@
 import React from "react";
-import Search from "./Search";
-import Result from "./Result";
+import Search from "./Search/Search";
+import Result from "./Result/Result";
 import "./index.css";
-import Liked from "./Liked";
+import Liked from "./Liked/Liked";
 
 const Container = () => {
   return (

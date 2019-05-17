@@ -4,27 +4,28 @@ import PropTypes from "prop-types";
 import TextField from "@material-ui/core/TextField";
 import { Button } from "@material-ui/core";
 import { updateSearch, fetchGif } from "../../../state/actions";
+import "./Search.css";
 
 const Search = props => {
   const [search, update] = useState("");
   const handleChange = val => update(val);
 
   return (
-    <div>
+    <React.Fragment>
       <div id="intro">
-        <p>
+        <div>
           Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque
           mattis maximus dui vel faucibus. Nam id rhoncus dui. Pellentesque
           habitant morbi tristique senectus et netus et malesuada fames ac
           turpis egestas. Orci varius natoque penatibus et magnis dis parturient
           montes, nascetur ridiculus mus.
-        </p>
-        <p>
+        </div>
+        <div>
           Ut vestibulum tempor iaculis. Aenean convallis, est non scelerisque
           pulvinar, mi nisi mattis nisi, vel volutpat leo arcu congue nibh. Sed
           elementum eleifend quam a hendrerit. Nam luctus dolor enim, rutrum
           cursus odio luctus eu.
-        </p>
+        </div>
       </div>
       <div id="search-bar-container">
         <div id="search-bar">
@@ -34,6 +35,7 @@ const Search = props => {
             variant="outlined"
           />
           <Button
+            variant={"contained"}
             onClick={() => {
               props.dispatch(updateSearch(search));
               props.dispatch(
@@ -46,7 +48,7 @@ const Search = props => {
           </Button>
         </div>
       </div>
-    </div>
+    </React.Fragment>
   );
 };
 

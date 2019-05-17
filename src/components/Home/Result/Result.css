@@ -1,4 +1,16 @@
+h2 {
+  padding-bottom: 20px;
+  align-self: flex-start;
+}
+
+#result-container {
+  display: flex;
+  align-content: center;
+  padding-bottom: 20px;
+}
+
 #slider-container {
+  width: 70%;
   padding: 50px 30px 50px 30px;
 }
 
