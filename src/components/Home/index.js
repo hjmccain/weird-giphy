@@ -2,6 +2,7 @@ import React from "react";
 import Search from "./Search";
 import Result from "./Result";
 import "./index.css";
+import Liked from "./Liked";
 
 const Container = () => {
   return (
@@ -14,7 +15,9 @@ const Container = () => {
           <Result />
         </div>
       </div>
-      <div id="liked-container">d</div>
+      <div id="liked-container">
+        <Liked />
+      </div>
     </div>
   );
 };

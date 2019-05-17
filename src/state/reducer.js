@@ -33,7 +33,7 @@ const reducer = (state = initState, action) => {
     case a.REMOVE_FAVORITE:
       return {
         ...state,
-        favorites: filter(fav => fav != action.url, state.favorites)
+        favorites: filter(fav => fav !== action.url, state.favorites)
       };
     default:
       return state;

@@ -1,18 +1,17 @@
 .s {
+  object-fit: cover;
   height: 100;
   width: 100;
-  overflow: hidden;
 }
 
 .m {
+  object-fit: cover;
   height: 150px;
   width: 150px;
-  overflow: hidden;
 }
 
 .l {
   object-fit: cover;
   height: 300px;
   width: 300px;
-  overflow: hidden;
 }
