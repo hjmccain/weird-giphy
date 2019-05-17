@@ -2,19 +2,19 @@ import React from "react";
 import PropTypes from "prop-types";
 import "./index.css";
 
-const GifImage = props => {
+const Gif = props => {
   return (
     <img
-      src={props.currentUrl}
+      src={props.gif.url}
       className={`${props.size} gif`}
       alt={"Replace with real alt text"}
     />
   );
 };
 
-GifImage.propTypes = {
+Gif.propTypes = {
   size: PropTypes.oneOf(["s", "m", "l"]).isRequired,
-  currentUrl: PropTypes.string.isRequired
+  gif: PropTypes.object
 };
 
-export default GifImage;
+export default Gif;

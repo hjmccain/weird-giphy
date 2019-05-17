@@ -1,4 +1,4 @@
-import { filter } from "ramda";
+import { filter, uniqBy } from "ramda";
 import * as a from "./actions";
 
 const initState = {
@@ -13,7 +13,11 @@ const reducer = (state = initState, action) => {
     case a.SET_CURRENT:
       return {
         ...state,
-        current: action.current.images.original.url
+        current: {
+          url: action.current.images.original.url,
+          gifId: action.current.id,
+          title: action.current.title
+        }
       };
     case a.UPDATE_SEARCH:
       return {
@@ -28,12 +32,12 @@ const reducer = (state = initState, action) => {
     case a.ADD_FAVORITE:
       return {
         ...state,
-        favorites: [...new Set([...state.favorites, action.url])]
+        favorites: [...state.favorites, action.gif]
       };
     case a.REMOVE_FAVORITE:
       return {
         ...state,
-        favorites: filter(fav => fav !== action.url, state.favorites)
+        favorites: filter(fav => fav !== action.gif, state.favorites)
       };
     default:
       return state;

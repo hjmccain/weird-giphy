@@ -24,12 +24,12 @@ const Result = props => {
     <div>
       <h2>Your result</h2>
       <div id="result-container">
-        <Gif size="l" currentUrl={props.currentUrl} />
+        {props.gif ? <Gif size="l" gif={props.gif} /> : null}
       </div>
       <Button
         onClick={() =>
           props.dispatch(
-            updateFavorites({ type: ADD_FAVORITE, url: props.currentUrl })
+            updateFavorites({ type: ADD_FAVORITE, gif: props.gif })
           )
         }
       >
@@ -45,12 +45,12 @@ const Result = props => {
 
 Result.propTypes = {
   dispatch: PropTypes.func.isRequired,
-  embedUrl: PropTypes.string
+  gif: PropTypes.object
 };
 
 export default connect(
   state => ({
-    currentUrl: state.current,
+    gif: state.current,
     searchTerm: state.searchTerm
   }),
   dispatch => ({ dispatch })

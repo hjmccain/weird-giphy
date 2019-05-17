@@ -1,12 +1,31 @@
 import React from "react";
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
-import GifImage from "../../Gif";
-import { map } from "ramda";
+import Images from "./Images";
+import { Button } from "@material-ui/core";
 
 const Liked = props => {
-  const gif = url => <GifImage size="m" currentUrl={url} />;
-  return map(fav => gif(fav), props.favorites);
+  const remainingLikes = 5 - props.favorites.length;
+
+  return (
+    <React.Fragment>
+      <Images favorites={props.favorites} />
+      <Button
+        disabled={!!remainingLikes}
+        onClick={() => console.log("Find out how weird I am!")}
+      >
+        How weird am I?
+      </Button>
+      {remainingLikes ? (
+        <div>
+          {`You need to "like" ${remainingLikes} more
+        ${
+          remainingLikes === 1 ? "gif" : "gifs"
+        } before you can calculate your score.`}
+        </div>
+      ) : null}
+    </React.Fragment>
+  );
 };
 
 Liked.propTypes = {

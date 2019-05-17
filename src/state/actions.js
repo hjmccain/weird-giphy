@@ -23,9 +23,9 @@ export const setCurrent = gif => ({
   current: gif
 });
 
-export const updateFavorites = ({ type, url }) => ({
+export const updateFavorites = ({ type, gif }) => ({
   type,
-  url
+  gif
 });
 
 export const updateSearch = searchTerm => ({
