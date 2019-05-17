@@ -1,3 +1,7 @@
+## Running locally
+
+Clone repo, yarn install all dependencies, and run `yarn start` to run app on localhost:3000. Built with Create React App.
+
 ## Overview
 
 In this code challenge, we will be testing your ability to interpret user requirements, come up with a viable implementation, write code, and communicate the benefits and shortcomings of your solution. We will provide you with the product requirements and a low-fidelity mockup of the user interface for you to use as a guide and starting point.
