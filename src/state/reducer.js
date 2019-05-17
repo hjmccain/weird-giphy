@@ -1,4 +1,4 @@
-import { exists } from "ramda";
+import { filter } from "ramda";
 import * as a from "./actions";
 
 const initState = {
@@ -25,9 +25,16 @@ const reducer = (state = initState, action) => {
         ...state,
         weird: action.weird
       };
-    case a.UPDATE_FAVORITES: {
-      return state;
-    }
+    case a.ADD_FAVORITE:
+      return {
+        ...state,
+        favorites: [...new Set([...state.favorites, action.url])]
+      };
+    case a.REMOVE_FAVORITE:
+      return {
+        ...state,
+        favorites: filter(fav => fav != action.url, state.favorites)
+      };
     default:
       return state;
   }

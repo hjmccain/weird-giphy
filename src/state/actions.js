@@ -1,11 +1,12 @@
 export const SET_CURRENT = "SET_CURRENT";
-export const UPDATE_FAVORITES = "UPDATE_FAVORITES";
+export const ADD_FAVORITE = "ADD_FAVORITE";
+export const REMOVE_FAVORITE = "REMOVE_FAVORITE";
 export const UPDATE_SEARCH = "UPDATE_SEARCH";
 export const UPDATE_WEIRD = "UPDATE_WEIRD";
 
 export const fetchGif = ({ searchTerm, weird }) => dispatch =>
   fetch(
-    `http://api.giphy.com/v1/gifs/search?q=${searchTerm}&api_key=7EXrkYnwiEJfdy6uEgyp1HW2HZz8plJi&limit&weirdness=${weird}&limit=1`
+    `http://api.giphy.com/v1/gifs/translate?s=${searchTerm}&api_key=7EXrkYnwiEJfdy6uEgyp1HW2HZz8plJi&weirdness=${weird}`
   )
     .then(res => {
       if (!res.ok) {
@@ -14,11 +15,7 @@ export const fetchGif = ({ searchTerm, weird }) => dispatch =>
 
       return res.json();
     })
-    .then(({ data }) =>
-      data.length
-        ? dispatch(setCurrent({ ...data[0], weird }))
-        : console.error("No gif returned in array.")
-    )
+    .then(({ data }) => dispatch(setCurrent({ ...data, weird })))
     .catch(e => console.error("Error fetching gifs. Error:", e));
 
 export const setCurrent = gif => ({
@@ -26,9 +23,9 @@ export const setCurrent = gif => ({
   current: gif
 });
 
-export const updateFavorites = id => ({
-  type: UPDATE_FAVORITES,
-  id
+export const updateFavorites = ({ type, url }) => ({
+  type,
+  url
 });
 
 export const updateSearch = searchTerm => ({

@@ -7,7 +7,7 @@ import { fetchGif } from "../state/actions";
 
 class Container extends React.Component {
   componentDidMount = () =>
-    this.props.dispatch(fetchGif({ searchTerm: "game+of+thrones", weird: 1 }));
+    this.props.dispatch(fetchGif({ searchTerm: "game+of+thrones", weird: 0 }));
 
   render() {
     return (
