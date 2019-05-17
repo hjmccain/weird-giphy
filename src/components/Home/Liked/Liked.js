@@ -18,7 +18,7 @@ const Liked = props => {
     <div>
       <Gif key={gif.id} size="m" gif={gif} />
       <div
-        class="overlay"
+        className="overlay"
         onClick={() =>
           props.dispatch(updateFavorites({ type: REMOVE_FAVORITE, gif }))
         }
