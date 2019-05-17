@@ -15,8 +15,8 @@ import "./Liked.css";
 const Liked = props => {
   const remainingLikes = 5 - props.favorites.length;
   const gif = gif => (
-    <div>
-      <Gif key={gif.id} size="m" gif={gif} />
+    <div key={gif.gifId}>
+      <Gif size="m" gif={gif} />
       <div
         className="overlay"
         onClick={() =>
