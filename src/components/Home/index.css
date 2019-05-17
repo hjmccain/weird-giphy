@@ -4,7 +4,7 @@
   justify-content: space-around;
 }
 
-#search-container {
+.container {
   width: 48%;
   height: 100%;
   display: flex;
@@ -12,8 +12,7 @@
   background: #edf5f5;
 }
 
-#search,
-#result {
+.sub-container {
   display: flex;
   flex-direction: column;
   padding: 20px;
@@ -23,12 +22,21 @@
   border-bottom: 1px solid gray;
 }
 
-#result {
+#result,
+#liked {
   align-items: center;
+}
+
+#search-container > button {
+  width: 85px;
 }
 
 #liked-container {
   width: 48%;
   height: 100%;
   background: #edf5f5;
+}
+
+#liked-container > button {
+  width: 150px;
 }

@@ -2,8 +2,8 @@ import React from "react";
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
 import HomeContainer from "./Home";
-import Header from "./Header";
 import { fetchGif } from "../state/actions";
+import "./Container.css";
 
 class Container extends React.Component {
   componentDidMount = () =>
@@ -12,7 +12,7 @@ class Container extends React.Component {
   render() {
     return (
       <div id="container">
-        <Header />
+        <div id="app-header">Weirdness Calculator</div>
         <HomeContainer />
       </div>
     );

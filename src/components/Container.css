@@ -1,0 +1,22 @@
+#container {
+  display: flex;
+  flex-direction: column;
+  font-family: "Roboto", sans-serif;
+}
+
+#app-header {
+  padding: 20px;
+  margin-bottom: 10px;
+  background: #c3dede;
+  font-size: 2em;
+}
+
+/* global styles */
+
+button {
+  height: 95%;
+}
+
+h2 {
+  font-size: 1.2em;
+}

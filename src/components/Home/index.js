@@ -7,16 +7,18 @@ import Liked from "./Liked/Liked";
 const Container = () => {
   return (
     <div id="home">
-      <div id="search-container">
-        <div id="search">
+      <div id="search-container" className="container">
+        <div id="search" className="sub-container">
           <Search />
         </div>
-        <div id="result">
+        <div id="result" className="sub-container">
           <Result />
         </div>
       </div>
-      <div id="liked-container">
-        <Liked />
+      <div id="liked-container" className="container">
+        <div id="liked" className="sub-container">
+          <Liked />
+        </div>
       </div>
     </div>
   );

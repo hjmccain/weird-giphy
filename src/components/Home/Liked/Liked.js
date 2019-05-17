@@ -4,6 +4,7 @@ import PropTypes from "prop-types";
 import { Button } from "@material-ui/core";
 import Gif from "../../Gif/Gif";
 import { map } from "ramda";
+import "./Liked.css";
 
 // DUMMY STUFF
 const dummy = () => ({
@@ -14,26 +15,36 @@ const dummy = () => ({
 
 const Liked = props => {
   const remainingLikes = 5 - props.favorites.length;
-  const gif = gif => <Gif key={gif.id} size="m" gif={gif} />;
+  const gif = gif => (
+    <React.Fragment>
+      <Gif key={gif.id} size="m" gif={gif} />
+    </React.Fragment>
+  );
 
   return (
     <React.Fragment>
-      {map(fav => gif(fav), [dummy(), dummy(), dummy(), dummy(), dummy()])}
+      <h2>YOUR LIKED GIFS</h2>
+      <div id="favorite-gifs">
+        {map(fav => gif(fav), [dummy(), dummy(), dummy(), dummy(), dummy()])}
+      </div>
       {/* {map(fav => gif(fav), props.favorites)} */}
       <Button
+        variant={"contained"}
         disabled={!!remainingLikes}
         onClick={() => console.log("Find out how weird I am!")}
       >
         How weird am I?
       </Button>
       {remainingLikes ? (
-        <div>
+        <div id="counter">
           {`You need to "like" ${remainingLikes} more
         ${
           remainingLikes === 1 ? "gif" : "gifs"
         } before you can calculate your score.`}
         </div>
-      ) : null}
+      ) : (
+        "Calculate your score!"
+      )}
     </React.Fragment>
   );
 };

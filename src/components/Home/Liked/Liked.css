@@ -1,0 +1,18 @@
+#favorite-gifs {
+  display: flex;
+  flex-wrap: wrap;
+  margin-bottom: 10px;
+}
+
+#favorite-gifs > img {
+  padding: 10px;
+}
+
+#favorite-gifs > img:hover {
+  background: white;
+  opacity: 50%;
+}
+
+#counter {
+  margin-top: 20px;
+}
