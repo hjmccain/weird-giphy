@@ -8,11 +8,6 @@
   padding: 10px;
 }
 
-#favorite-gifs > img:hover {
-  background: white;
-  opacity: 50%;
-}
-
 #counter {
   margin-top: 20px;
 }

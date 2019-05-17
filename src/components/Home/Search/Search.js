@@ -58,6 +58,6 @@ Search.propTypes = {
 };
 
 export default connect(
-  state => ({ weird: state.weird }),
+  state => ({ weird: state.gifs.weird }),
   dispatch => ({ dispatch })
 )(Search);

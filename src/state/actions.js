@@ -3,7 +3,9 @@ export const ADD_FAVORITE = "ADD_FAVORITE";
 export const REMOVE_FAVORITE = "REMOVE_FAVORITE";
 export const UPDATE_SEARCH = "UPDATE_SEARCH";
 export const UPDATE_WEIRD = "UPDATE_WEIRD";
+export const UPDATE_LOCATION = "UPDATE_LOCATION";
 
+// gifs
 export const fetchGif = ({ searchTerm, weird }) => dispatch =>
   fetch(
     `http://api.giphy.com/v1/gifs/translate?s=${searchTerm}&api_key=7EXrkYnwiEJfdy6uEgyp1HW2HZz8plJi&weirdness=${weird}`
@@ -36,4 +38,10 @@ export const updateSearch = searchTerm => ({
 export const updateWeird = weird => ({
   type: UPDATE_WEIRD,
   weird
+});
+
+// "routing"
+export const updateLocation = location => ({
+  type: UPDATE_LOCATION,
+  location
 });

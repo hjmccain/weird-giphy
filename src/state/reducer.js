@@ -1,5 +1,6 @@
 import { filter, uniqBy } from "ramda";
 import * as a from "./actions";
+import { combineReducers } from "../../../../Library/Caches/typescript/3.4.5/node_modules/redux";
 
 const initState = {
   weird: 1,
@@ -8,7 +9,7 @@ const initState = {
   favorites: []
 };
 
-const reducer = (state = initState, action) => {
+const gifs = (state = initState, action) => {
   switch (action.type) {
     case a.SET_CURRENT:
       return {
@@ -44,4 +45,20 @@ const reducer = (state = initState, action) => {
   }
 };
 
-export default reducer;
+const routeState = {
+  location: "HOME"
+};
+
+const naiveRouting = (state = routeState, action) => {
+  switch (action.type) {
+    case a.UPDATE_LOCATION:
+      return {
+        ...state,
+        location: action.location
+      };
+    default:
+      return state;
+  }
+};
+
+export default combineReducers({ gifs, naiveRouting });

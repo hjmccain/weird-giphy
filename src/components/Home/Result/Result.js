@@ -51,8 +51,8 @@ Result.propTypes = {
 
 export default connect(
   state => ({
-    gif: state.current,
-    searchTerm: state.searchTerm
+    gif: state.gifs.current,
+    searchTerm: state.gifs.searchTerm
   }),
   dispatch => ({ dispatch })
 )(Result);
