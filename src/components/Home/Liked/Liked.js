@@ -15,16 +15,17 @@ import "./Liked.css";
 const Liked = props => {
   const remainingLikes = 5 - props.favorites.length;
   const gif = gif => (
-    <React.Fragment>
-      <Gif
-        key={gif.id}
-        size="m"
-        gif={gif}
+    <div>
+      <Gif key={gif.id} size="m" gif={gif} />
+      <div
+        class="overlay"
         onClick={() =>
           props.dispatch(updateFavorites({ type: REMOVE_FAVORITE, gif }))
         }
-      />
-    </React.Fragment>
+      >
+        DELETE
+      </div>
+    </div>
   );
 
   return (

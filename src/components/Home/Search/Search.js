@@ -4,6 +4,7 @@ import PropTypes from "prop-types";
 import TextField from "@material-ui/core/TextField";
 import { Button } from "@material-ui/core";
 import { updateSearch, fetchGif } from "../../../state/actions";
+import { contains } from "ramda";
 import "./Search.css";
 
 const Search = props => {
@@ -37,11 +38,17 @@ const Search = props => {
           <Button
             variant={"contained"}
             onClick={() => {
-              props.dispatch(updateSearch(search));
-              props.dispatch(
-                fetchGif({ searchTerm: search, weird: props.weird })
-              );
-              handleChange("");
+              if (!contains(search, props.allSearchTerms)) {
+                props.dispatch(updateSearch(search));
+                props.dispatch(
+                  fetchGif({ searchTerm: search, weird: props.weird })
+                );
+                handleChange("");
+              } else {
+                window.alert(
+                  "Enter a new search term to keep your results WEIRDER!"
+                );
+              }
             }}
           >
             Submit
@@ -54,10 +61,14 @@ const Search = props => {
 
 Search.propTypes = {
   dispatch: PropTypes.func.isRequired,
-  weird: PropTypes.number.isRequired
+  weird: PropTypes.number.isRequired,
+  allSearchTerms: PropTypes.array
 };
 
 export default connect(
-  state => ({ weird: state.gifs.weird }),
+  state => ({
+    weird: state.gifs.weird,
+    allSearchTerms: state.gifs.allSearchTerms
+  }),
   dispatch => ({ dispatch })
 )(Search);

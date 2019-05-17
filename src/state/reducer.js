@@ -6,6 +6,7 @@ import { combineReducers } from "../../../../Library/Caches/typescript/3.4.5/nod
 const initState = {
   weird: 1,
   searchTerm: "game+of+thrones",
+  allSearchTerms: [],
   current: null,
   favorites: []
 };
@@ -25,7 +26,8 @@ const gifs = (state = initState, action) => {
     case a.UPDATE_SEARCH:
       return {
         ...state,
-        searchTerm: action.searchTerm
+        searchTerm: action.searchTerm,
+        allSearchTerms: [...state.allSearchTerms, action.searchTerm]
       };
     case a.UPDATE_WEIRD:
       return {

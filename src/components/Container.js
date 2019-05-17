@@ -15,7 +15,6 @@ class Container extends React.Component {
       <div id="container">
         <div id="app-header">Weirdness Calculator</div>
         {this.props.location === HOME ? <HomeContainer /> : <ResultsDash />}
-        {/* <ResultsDash /> */}
       </div>
     );
   }
