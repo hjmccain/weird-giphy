@@ -1,7 +1,7 @@
 import { filter, uniqBy } from "ramda";
 import * as a from "./actions";
 import { HOME } from "./actions";
-import { combineReducers } from "../../../../Library/Caches/typescript/3.4.5/node_modules/redux";
+import { combineReducers } from "redux";
 
 const initState = {
   weird: 1,
